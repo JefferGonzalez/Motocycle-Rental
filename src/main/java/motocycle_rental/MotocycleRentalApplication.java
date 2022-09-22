@@ -1,4 +1,4 @@
-package motocycle_rental.motocycle_rental;
+package motocycle_rental;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package motocycle_rental.motocycle_rental;
+package motocycle_rental_tests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
