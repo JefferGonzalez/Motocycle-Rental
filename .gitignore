@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### New rules for mac ###
+
+.DS_Store
+src/.DS_Store
