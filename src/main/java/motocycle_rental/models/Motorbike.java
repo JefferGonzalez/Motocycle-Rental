@@ -6,21 +6,23 @@ import javax.persistence.*;
 public class Motorbike {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private Integer model;
     private String brand;
+    private Integer year;
+    private String name;
+    private String description;
 
     public Motorbike(){
 
     }
 
-    public Motorbike(Integer id, String name, Integer model, String brand) {
+    public Motorbike(Integer id, String brand, Integer year, String name, String description) {
         this.id = id;
-        this.name = name;
-        this.model = model;
         this.brand = brand;
+        this.year = year;
+        this.name = name;
+        this.description = description;
     }
 
     public Integer getId() {
@@ -31,6 +33,22 @@ public class Motorbike {
         this.id = id;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
     public String getName() {
         return name;
     }
@@ -39,20 +57,12 @@ public class Motorbike {
         this.name = name;
     }
 
-    public Integer getModel() {
-        return model;
+    public String getDescription() {
+        return description;
     }
 
-    public void setModel(Integer model) {
-        this.model = model;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }
