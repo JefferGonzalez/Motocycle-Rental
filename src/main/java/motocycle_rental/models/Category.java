@@ -1,5 +1,6 @@
 package motocycle_rental.models;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="category")
@@ -13,6 +14,10 @@ public class Category {
     private String name;
     @Column(length = 45)
     private String description;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category_id")
+    private List<Motorbike> motorbikes;
+
 
     public Category(){
     }

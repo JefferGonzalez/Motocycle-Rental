@@ -1,5 +1,7 @@
 package motocycle_rental.models;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="client")
@@ -18,6 +20,13 @@ public class Client {
     private String password;
     @Column(length = 3)
     private Integer age;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client_id")
+    private List<Message> messages;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client_id")
+    private List<Reservation> reservations;
+
 
     public Client() {
     }
