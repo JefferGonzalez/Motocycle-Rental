@@ -16,15 +16,27 @@ public class Reservation {
     private String devolutionDate;
     @Column(length=45)
     private String status;
+    @ManyToOne
+    @JoinColumn(name = "motorbike_id")
+    private Motorbike motorbike;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+    @OneToOne
+    @JoinColumn(name = "score_id")
+    private Score score;
 
     public Reservation() {
     }
 
-    public Reservation(Integer idReservation, String startDate, String devolutionDate, String status) {
+    public Reservation(Integer idReservation, String startDate, String devolutionDate, String status, Motorbike motorbike, Client client, Score score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
         this.status = status;
+        this.motorbike = motorbike;
+        this.client = client;
+        this.score = score;
     }
 
     public Integer getIdReservation() {
@@ -57,6 +69,30 @@ public class Reservation {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Motorbike getMotorbike() {
+        return motorbike;
+    }
+
+    public void setMotorbike(Motorbike motorbike) {
+        this.motorbike = motorbike;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Score getScore() {
+        return score;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
     }
 
 }
