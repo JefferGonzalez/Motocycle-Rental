@@ -15,17 +15,17 @@ public class Category {
     @Column(length = 45)
     private String description;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category_id")
     private List<Motorbike> motorbikes;
+
 
     public Category(){
     }
 
-    public Category(Integer id, String name, String description, List<Motorbike> motorbikes) {
+    public Category(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.motorbikes = motorbikes;
     }
 
     public Integer getId() {
@@ -50,13 +50,5 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Motorbike> getMotorbikes() {
-        return motorbikes;
-    }
-
-    public void setMotorbikes(List<Motorbike> motorbikes) {
-        this.motorbikes = motorbikes;
     }
 }

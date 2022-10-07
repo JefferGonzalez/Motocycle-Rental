@@ -20,24 +20,21 @@ public class Motorbike {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike_id")
     private List<Message> messages;
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "motorbike_id")
     private List<Reservation> reservations;
 
     public Motorbike(){
 
     }
 
-    public Motorbike(Integer id, String name, String brand, Integer year, String description, Category category, List<Message> messages, List<Reservation> reservations) {
+    public Motorbike(Integer id, String brand, Integer year, String name, String description) {
         this.id = id;
-        this.name = name;
         this.brand = brand;
         this.year = year;
+        this.name = name;
         this.description = description;
-        this.category = category;
-        this.messages = messages;
-        this.reservations = reservations;
     }
 
     public Integer getId() {
@@ -80,27 +77,4 @@ public class Motorbike {
         this.description = description;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public List<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
-    }
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
-    }
 }
