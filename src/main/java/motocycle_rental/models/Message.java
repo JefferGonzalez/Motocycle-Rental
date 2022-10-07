@@ -12,12 +12,12 @@ public class Message {
     private Integer idMessage;
     @Column(length = 250, name = "message_text")
     private String messageText;
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-    @ManyToOne
-    @JoinColumn(name = "motorbike_id")
-    private Motorbike motorbike;
+    @ManyToOne                      // Relación muchos a uno
+    @JoinColumn(name = "client_id") // Nombre de la columna que hace referencia a la llave foránea
+    private Client client;          // Objeto de la clase Client
+    @ManyToOne                         // Relación muchos a uno
+    @JoinColumn(name = "motorbike_id") // Nombre de la columna que hace referencia a la llave foránea
+    private Motorbike motorbike;       // Objeto de la clase Motorbike
 
     public Message() {
     }

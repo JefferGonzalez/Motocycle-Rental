@@ -9,7 +9,6 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column(name = "id")
     private Integer idClient;
     @Column(length = 45)
@@ -20,23 +19,22 @@ public class Client {
     private String password;
     @Column(length = 3)
     private Integer age;
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client_id")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     private List<Message> messages;
-
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client_id")
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     private List<Reservation> reservations;
-
 
     public Client() {
     }
 
-    public Client(Integer idClient, String name, String email, String password, Integer age) {
+    public Client(Integer idClient, String name, String email, String password, Integer age, List<Message> messages, List<Reservation> reservations) {
         this.idClient = idClient;
         this.name = name;
         this.email = email;
         this.password = password;
         this.age = age;
+        this.messages = messages;
+        this.reservations = reservations;
     }
 
     public Integer getIdClient() {
@@ -77,5 +75,21 @@ public class Client {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }
