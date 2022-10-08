@@ -1,5 +1,7 @@
 package motocycle_rental.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,26 +14,28 @@ public class Client {
     @Column(name = "id")
     private Integer idClient;
     @Column(length = 45)
-    private String name;
-    @Column(length = 45)
     private String email;
     @Column(length = 45)
     private String password;
+    @Column(length = 45)
+    private String name;
     @Column(length = 3)
     private Integer age;
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("client")
     private List<Message> messages;
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
+    @JsonIgnoreProperties("client")
     private List<Reservation> reservations;
 
     public Client() {
     }
 
-    public Client(Integer idClient, String name, String email, String password, Integer age, List<Message> messages, List<Reservation> reservations) {
+    public Client(Integer idClient, String email, String password, String name, Integer age, List<Message> messages, List<Reservation> reservations) {
         this.idClient = idClient;
-        this.name = name;
         this.email = email;
         this.password = password;
+        this.name = name;
         this.age = age;
         this.messages = messages;
         this.reservations = reservations;
@@ -43,14 +47,6 @@ public class Client {
 
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -67,6 +63,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getAge() {
