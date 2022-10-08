@@ -22,7 +22,7 @@ public class ClientController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
 
-    public Client save(@RequestBody Client client) {
-        return clientInterface.save(client);
+    public void save(@RequestBody Client client) {
+        clientInterface.save(client);
     }
 }

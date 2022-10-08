@@ -22,8 +22,8 @@ public class CategoryController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
 
-    public Category save(@RequestBody Category category){
-        return categoryInterface.save(category);
+    public void save(@RequestBody Category category){
+        categoryInterface.save(category);
     }
 
 }
