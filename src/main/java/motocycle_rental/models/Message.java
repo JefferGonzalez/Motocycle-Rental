@@ -15,21 +15,21 @@ public class Message {
     @Column(length = 250, name = "message_text")
     private String messageText;
     @ManyToOne                                          // Relación muchos a uno
-    @JoinColumn(name = "client_id")                     // Nombre de la columna que hace referencia a la llave foránea
-    private Client client;                              // Objeto de la clase Client
-    @ManyToOne                                          // Relación muchos a uno
     @JoinColumn(name = "motorbike_id")                  // Nombre de la columna que hace referencia a la llave foránea
     @JsonIgnoreProperties({"messages", "reservations"}) // Evita que se cree un bucle infinito
     private Motorbike motorbike;                        // Objeto de la clase Motorbike
-
+    @ManyToOne                                          // Relación muchos a uno
+    @JoinColumn(name = "client_id")                     // Nombre de la columna que hace referencia a la llave foránea
+    @JsonIgnoreProperties({"messages", "reservations"})
+    private Client client;                              // Objeto de la clase Client
     public Message() {
     }
 
-    public Message(Integer idMessage, String messageText, Client client, Motorbike motorbike) {
+    public Message(Integer idMessage, String messageText, Motorbike motorbike, Client client) {
         this.idMessage = idMessage;
         this.messageText = messageText;
-        this.client = client;
         this.motorbike = motorbike;
+        this.client = client;
     }
 
     public Integer getIdMessage() {
@@ -48,6 +48,14 @@ public class Message {
         this.messageText = messageText;
     }
 
+    public Motorbike getMotorbike() {
+        return motorbike;
+    }
+
+    public void setMotorbike(Motorbike motorbike) {
+        this.motorbike = motorbike;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -56,11 +64,4 @@ public class Message {
         this.client = client;
     }
 
-    public Motorbike getMotorbike() {
-        return motorbike;
-    }
-
-    public void setMotorbike(Motorbike motorbike) {
-        this.motorbike = motorbike;
-    }
 }
