@@ -21,6 +21,7 @@ public class ReservationController {
     }
 
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody Reservation reservation){
         reservationInterface.save(reservation);
     }
