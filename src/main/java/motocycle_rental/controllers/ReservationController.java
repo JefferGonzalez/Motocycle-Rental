@@ -21,8 +21,8 @@ public class ReservationController {
     }
 
     @PostMapping("/save")
-    public Reservation save(@RequestBody Reservation reservation){
-        return reservationInterface.save(reservation);
+    public void save(@RequestBody Reservation reservation){
+        reservationInterface.save(reservation);
     }
 
 }

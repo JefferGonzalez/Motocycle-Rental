@@ -14,13 +14,13 @@ public class Message {
     private Integer idMessage;
     @Column(length = 250, name = "message_text")
     private String messageText;
-    @ManyToOne                      // Relación muchos a uno
-    @JoinColumn(name = "client_id") // Nombre de la columna que hace referencia a la llave foránea
-    private Client client;          // Objeto de la clase Client
-    @ManyToOne                         // Relación muchos a uno
-    @JoinColumn(name = "motorbike_id") // Nombre de la columna que hace referencia a la llave foránea
+    @ManyToOne                                          // Relación muchos a uno
+    @JoinColumn(name = "client_id")                     // Nombre de la columna que hace referencia a la llave foránea
+    private Client client;                              // Objeto de la clase Client
+    @ManyToOne                                          // Relación muchos a uno
+    @JoinColumn(name = "motorbike_id")                  // Nombre de la columna que hace referencia a la llave foránea
     @JsonIgnoreProperties({"messages", "reservations"}) // Evita que se cree un bucle infinito
-    private Motorbike motorbike;       // Objeto de la clase Motorbike
+    private Motorbike motorbike;                        // Objeto de la clase Motorbike
 
     public Message() {
     }
