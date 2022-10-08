@@ -1,5 +1,7 @@
 package motocycle_rental.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Message {
     private Client client;          // Objeto de la clase Client
     @ManyToOne                         // Relación muchos a uno
     @JoinColumn(name = "motorbike_id") // Nombre de la columna que hace referencia a la llave foránea
+    @JsonIgnoreProperties({"messages", "reservations"}) // Evita que se cree un bucle infinito
     private Motorbike motorbike;       // Objeto de la clase Motorbike
 
     public Message() {

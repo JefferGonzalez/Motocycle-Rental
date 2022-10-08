@@ -1,6 +1,9 @@
 package motocycle_rental.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name="reservation")
@@ -8,19 +11,21 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Integer idReservation;
-    @Column(length=45, name="start_date")
-    private String startDate;
-    @Column(length=45, name="devolution_date")
-    private String devolutionDate;
-    @Column(length=45)
+    @Column(length = 45, name = "start_date")
+    private Date startDate;
+    @Column(length = 45, name = "devolution_date")
+    private Date devolutionDate;
+    @Column(length = 45)
     private String status;
     @ManyToOne
     @JoinColumn(name = "motorbike_id")
+    @JsonIgnoreProperties("reservations")
     private Motorbike motorbike;
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
     @OneToOne
     @JoinColumn(name = "score_id")
@@ -29,7 +34,7 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Integer idReservation, String startDate, String devolutionDate, String status, Motorbike motorbike, Client client, Score score) {
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, String status, Motorbike motorbike, Client client, Score score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
@@ -47,19 +52,19 @@ public class Reservation {
         this.idReservation = idReservation;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(String devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
