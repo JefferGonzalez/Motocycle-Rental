@@ -18,7 +18,7 @@ public class Reservation {
     @Column(length = 45, name = "devolution_date")
     private Date devolutionDate;
     @Column(length = 45)
-    private String status;
+    private String status = "created";
     @ManyToOne
     @JoinColumn(name = "motorbike_id")
     @JsonIgnoreProperties("reservations")
