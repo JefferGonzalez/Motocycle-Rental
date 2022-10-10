@@ -26,4 +26,16 @@ public class CategoryController {
         categoryInterface.save(category);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void update(@RequestBody Category category){
+        categoryInterface.save(category);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        categoryInterface.deleteById(id);
+    }
+
 }
