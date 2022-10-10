@@ -1,6 +1,7 @@
 package motocycle_rental.controllers;
 
 import motocycle_rental.models.Client;
+import motocycle_rental.models.Score;
 import motocycle_rental.repositories.ClientInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,5 +25,16 @@ public class ClientController {
 
     public void save(@RequestBody Client client) {
         clientInterface.save(client);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void update(@RequestBody Client client) {
+        clientInterface.save(client);
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        clientInterface.deleteById(id);
     }
 }
