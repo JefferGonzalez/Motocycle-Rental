@@ -26,4 +26,16 @@ public class MotorbikeController {
         motorbikeInterface.save(motorbike);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void update(@RequestBody Motorbike motorbike) {
+        motorbikeInterface.save(motorbike);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id){
+        motorbikeInterface.deleteById(id);
+    }
+
 }
