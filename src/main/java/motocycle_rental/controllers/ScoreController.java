@@ -1,5 +1,6 @@
 package motocycle_rental.controllers;
 
+import motocycle_rental.models.Motorbike;
 import motocycle_rental.models.Score;
 import motocycle_rental.repositories.ScoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,17 @@ public class ScoreController {
         public void save(@RequestBody Score score){
             scoreInterface.save(score);
         }
+        @PutMapping("/update")
+        @ResponseStatus(HttpStatus.CREATED)
+        public void update(@RequestBody Score score) {
+            scoreInterface.save(score);
+        }
+        @DeleteMapping("/{id}")
+        @ResponseStatus(HttpStatus.NO_CONTENT)
+        public void delete(@PathVariable Integer id){
+            scoreInterface.deleteById(id);
+        }
+
 
     }
 
