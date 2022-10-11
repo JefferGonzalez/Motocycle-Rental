@@ -20,14 +20,7 @@ public class MotorbikeController {
 
     @GetMapping("/all")
     public List<Motorbike> getAll() {
-        List<Motorbike> data = (List<Motorbike>) motorbikeInterface.findAll();
-        data.forEach(motorbike -> {
-            if (motorbike.getName().equals("AK125 cc")) {
-                motorbike.setMessages(null);
-                motorbike.setReservations(null);
-            }
-        });
-        return data;
+        return (List<Motorbike>) motorbikeInterface.findAll();
     }
 
     @PostMapping("/save")
