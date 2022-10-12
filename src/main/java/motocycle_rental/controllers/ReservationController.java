@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Reservation")
@@ -17,8 +18,13 @@ public class ReservationController {
     private ReservationInterface reservationInterface;
 
     @GetMapping("/all")
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll() {
         return (List<Reservation>) reservationInterface.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Reservation> searchForId(@PathVariable Integer id) {
+        return reservationInterface.findById(id);
     }
 
     @PostMapping("/save")
@@ -35,7 +41,7 @@ public class ReservationController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") int id){
+    public void delete(@PathVariable("id") int id) {
         reservationInterface.deleteById(id);
     }
 
