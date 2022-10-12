@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Message")
@@ -17,8 +18,13 @@ public class MessageController {
     private MessageInterface messageInterface;
 
     @GetMapping("/all")
-    public List<Message> getAll(){
+    public List<Message> getAll() {
         return (List<Message>) messageInterface.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Message> searchForId(@PathVariable Integer id) {
+        return messageInterface.findById(id);
     }
 
     @PostMapping("/save")
@@ -35,7 +41,7 @@ public class MessageController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable("id") int id){
+    public void delete(@PathVariable("id") int id) {
         messageInterface.deleteById(id);
     }
 

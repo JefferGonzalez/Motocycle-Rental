@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Category")
@@ -16,13 +17,17 @@ public class CategoryController {
     private CategoryInterface categoryInterface;
 
     @GetMapping("/all")
-    public List<Category> getAll(){
+    public List<Category> getAll() {
         return (List<Category>) categoryInterface.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Category> searchForId(@PathVariable Integer id) {
+        return categoryInterface.findById(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-
     public Category save(@RequestBody Category category){
         return categoryInterface.save(category);
     }
@@ -35,7 +40,7 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Integer id) {
         categoryInterface.deleteById(id);
     }
 

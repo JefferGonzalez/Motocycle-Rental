@@ -1,6 +1,5 @@
 package motocycle_rental.controllers;
 
-import motocycle_rental.models.Motorbike;
 import motocycle_rental.models.Score;
 import motocycle_rental.repositories.ScoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Score")
@@ -20,6 +20,11 @@ public class ScoreController {
     @GetMapping("/all")
     public List<Score> getAll() {
         return (List<Score>) scoreInterface.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Score> searchForId(@PathVariable Integer id) {
+        return scoreInterface.findById(id);
     }
 
     @PostMapping("/save")

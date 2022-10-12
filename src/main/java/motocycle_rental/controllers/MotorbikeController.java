@@ -4,10 +4,8 @@ import motocycle_rental.models.Motorbike;
 import motocycle_rental.repositories.MotorbikeInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +20,11 @@ public class MotorbikeController {
     @GetMapping("/all")
     public List<Motorbike> getAll() {
         return (List<Motorbike>) motorbikeInterface.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Motorbike> searchForId(@PathVariable Integer id) {
+        return motorbikeInterface.findById(id);
     }
 
     @PostMapping("/save")
