@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Category")
+@CrossOrigin(origins = "*")
 public class CategoryController {
     @Autowired
     private CategoryInterface categoryInterface;
