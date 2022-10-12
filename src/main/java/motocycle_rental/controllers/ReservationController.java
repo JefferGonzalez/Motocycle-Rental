@@ -23,14 +23,14 @@ public class ReservationController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Reservation reservation){
-        reservationInterface.save(reservation);
+    public Reservation save(@RequestBody Reservation reservation){
+        return reservationInterface.save(reservation);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Reservation reservation){
-        reservationInterface.save(reservation);
+    public Reservation update(@RequestBody Reservation reservation){
+        return reservationInterface.save(reservation);
     }
 
     @DeleteMapping("/{id}")
@@ -40,11 +40,3 @@ public class ReservationController {
     }
 
 }
-
-/* DOCUMENTACIÓN DE LA CLASE
-
-@RestControler: Esta anotación se utiliza para crear un controlador RESTful. Esta anotación es una combinación de @Controller y @ResponseBody.
-@RequestMappin: Esta anotación se utiliza para mapear solicitudes web en métodos de controlador específicos. Se puede usar en el nivel de clase y en el nivel de método.
-@GetMapping: Esta anotación se utiliza para mapear solicitudes HTTP GET en métodos de controlador específicos.
-@PostMapping: Esta anotación se utiliza para mapear solicitudes HTTP POST en métodos de controlador específicos.
-*/

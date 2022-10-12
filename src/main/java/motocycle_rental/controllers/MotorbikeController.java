@@ -26,18 +26,18 @@ public class MotorbikeController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Motorbike motorbike) {
-        motorbikeInterface.save(motorbike);
+    public Motorbike save(@RequestBody Motorbike motorbike) {
+        return motorbikeInterface.save(motorbike);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Motorbike motorbike) {
+    public Motorbike update(@RequestBody Motorbike motorbike) {
         Optional<Motorbike> moto = motorbikeInterface.findById(motorbike.getId());
         if(moto.isPresent()){
             if(motorbike.getCategory() == null) motorbike.setCategory(moto.get().getCategory());
-            motorbikeInterface.save(motorbike);
         }
+        return motorbikeInterface.save(motorbike);
     }
 
     @DeleteMapping("/{id}")

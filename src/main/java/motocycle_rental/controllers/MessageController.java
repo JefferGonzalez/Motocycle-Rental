@@ -23,14 +23,14 @@ public class MessageController {
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Message message){
-        messageInterface.save(message);
+    public Message save(@RequestBody Message message){
+        return messageInterface.save(message);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Message message){
-        messageInterface.save(message);
+    public Message update(@RequestBody Message message){
+        return messageInterface.save(message);
     }
 
     @DeleteMapping("/{id}")

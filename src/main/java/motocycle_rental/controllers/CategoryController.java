@@ -23,14 +23,14 @@ public class CategoryController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
 
-    public void save(@RequestBody Category category){
-        categoryInterface.save(category);
+    public Category save(@RequestBody Category category){
+        return categoryInterface.save(category);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Category category){
-        categoryInterface.save(category);
+    public Category update(@RequestBody Category category){
+        return categoryInterface.save(category);
     }
 
     @DeleteMapping("/{id}")

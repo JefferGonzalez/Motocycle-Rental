@@ -24,14 +24,14 @@ public class ClientController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
 
-    public void save(@RequestBody Client client) {
-        clientInterface.save(client);
+    public Client save(@RequestBody Client client) {
+        return clientInterface.save(client);
     }
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public void update(@RequestBody Client client) {
-        clientInterface.save(client);
+    public Client update(@RequestBody Client client) {
+        return clientInterface.save(client);
     }
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

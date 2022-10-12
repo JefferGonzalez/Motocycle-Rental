@@ -14,30 +14,30 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ScoreController {
 
-        @Autowired
-        private ScoreInterface scoreInterface;
+    @Autowired
+    private ScoreInterface scoreInterface;
 
-        @GetMapping("/all")
-        public List<Score> getAll(){
-            return (List<Score>) scoreInterface.findAll();
-        }
-
-        @PostMapping("/save")
-        @ResponseStatus(HttpStatus.CREATED)
-        public void save(@RequestBody Score score){
-            scoreInterface.save(score);
-        }
-        @PutMapping("/update")
-        @ResponseStatus(HttpStatus.CREATED)
-        public void update(@RequestBody Score score) {
-            scoreInterface.save(score);
-        }
-        @DeleteMapping("/{id}")
-        @ResponseStatus(HttpStatus.NO_CONTENT)
-        public void delete(@PathVariable Integer id){
-            scoreInterface.deleteById(id);
-        }
-
-
+    @GetMapping("/all")
+    public List<Score> getAll() {
+        return (List<Score>) scoreInterface.findAll();
     }
 
+    @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Score save(@RequestBody Score score) {
+        return scoreInterface.save(score);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Score update(@RequestBody Score score) {
+        return scoreInterface.save(score);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+        scoreInterface.deleteById(id);
+    }
+
+}
