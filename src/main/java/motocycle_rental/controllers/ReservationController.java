@@ -58,10 +58,8 @@ public class ReservationController {
     }
 
     @GetMapping("/report-status")
-    public List<Status> reportStatus() {
-        List<Status> report = new ArrayList<>();
-        report.add(new Status(reservationInterface.findAllByStatus("completed").size(), reservationInterface.findAllByStatus("cancelled").size()));
-        return report;
+    public Status reportStatus() {
+        return new Status(reservationInterface.findAllByStatus("completed").size(), reservationInterface.findAllByStatus("cancelled").size());
     }
 
     @GetMapping("/report-clients")
