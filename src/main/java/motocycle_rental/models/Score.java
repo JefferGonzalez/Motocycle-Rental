@@ -8,8 +8,7 @@ public class Score {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(length = 1)
-    private Integer rating;
+    private String rating;
     @OneToOne(mappedBy = "score")
     private Reservation reservation;
 
@@ -17,7 +16,7 @@ public class Score {
 
     }
 
-    public Score(Integer id, Integer rating, Reservation reservation) {
+    public Score(Integer id, String rating, Reservation reservation) {
         this.id = id;
         this.rating = rating;
         this.reservation = reservation;
@@ -31,11 +30,11 @@ public class Score {
         this.id = id;
     }
 
-    public Integer getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Integer rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
