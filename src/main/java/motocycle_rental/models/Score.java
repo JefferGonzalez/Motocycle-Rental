@@ -1,4 +1,6 @@
 package motocycle_rental.models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Score {
     private Integer id;
     private String rating;
     @OneToOne(mappedBy = "score")
+    @JsonIgnoreProperties("score")
     private Reservation reservation;
 
     public Score() {

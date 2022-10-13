@@ -29,6 +29,7 @@ public class Reservation {
     private Client client;
     @OneToOne
     @JoinColumn(name = "score_id")
+    @JsonIgnoreProperties("reservation")
     private Score score;
 
     public Reservation() {
